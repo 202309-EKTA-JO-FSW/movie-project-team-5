@@ -1,6 +1,5 @@
-import Card from "@/components/Card"
-import Collection from "@/components/Collection"
 import LatestMovies from "@/components/home/LatestMovies"
+import PopularMovies from "@/components/home/PopularMovies"
 import { fetchLatestMovies, fetchPopularMovies } from "@/lib/data"
 
 export async function getStaticProps() {
@@ -20,9 +19,7 @@ export default function Home({ latestMovies, popularMovies }) {
   return (
     <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
       <LatestMovies data={latestMovies} />
-      <div>
-        <Collection data={popularMovies} title={"Popular Movies"} />
-      </div>
+      <PopularMovies data={popularMovies} />
     </main>
   )
 }
