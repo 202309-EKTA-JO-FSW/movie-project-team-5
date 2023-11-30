@@ -21,13 +21,7 @@ export default function Home({ latestMovies, popularMovies }) {
     <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
       <LatestMovies data={latestMovies} />
       <div>
-        {popularMovies.map((movie) => {
-          return (
-            <div>
-              <Card category={movie} key={movie.id} />
-            </div>
-          )
-        })}
+        <Collection data={popularMovies} title={"Popular Movies"} />
       </div>
     </main>
   )
