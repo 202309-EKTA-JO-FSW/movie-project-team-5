@@ -26,7 +26,7 @@ const NavBar = () => {
             {genresList.map((genres) => {
               return (
                 <div className=" hover:bg-blue-400">
-                  <Link href={`movies/${genres.name}`} key={genres.id}>
+                  <Link href={`movies/${genres.names}`} key={genres.id}>
                     {genres.name}
                   </Link>
                 </div>
