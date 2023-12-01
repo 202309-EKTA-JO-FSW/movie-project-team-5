@@ -9,3 +9,4 @@ export default function Layout({ children }) {
     </>
   )
 }
+// begin to build the single movie page after creating a new branch
