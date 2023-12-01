@@ -3,6 +3,7 @@ import Link from "next/link"
 import { fetchMoviesGenresList } from "@/lib/data"
 import SearchBar from "./SearchBar"
 
+
 const NavBar = () => {
   const [genresList, seGenresList] = useState([])
 
