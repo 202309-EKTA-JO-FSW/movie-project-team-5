@@ -1,7 +1,7 @@
 const SearchBar = () => {
   return (
     <div>
-      <div bg-wjite>
+      <div>
         <input
           type="text"
           placeholder="search..."

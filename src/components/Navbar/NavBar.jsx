@@ -3,7 +3,6 @@ import Link from "next/link"
 import { fetchMoviesGenresList } from "@/lib/data"
 import SearchBar from "./SearchBar"
 
-
 const NavBar = () => {
   const [genresList, seGenresList] = useState([])
 
@@ -27,10 +26,8 @@ const NavBar = () => {
           <div className="absolute top-full left-0 bg-white py-2 px-1 hidden group-hover:flex flex-col text-black z-50 text-sm">
             {genresList.map((genres) => {
               return (
-                <div className=" hover:bg-blue-400">
-                  <Link href={`movies/${genres.names}`} key={genres.id}>
-                    {genres.name}
-                  </Link>
+                <div className=" hover:bg-blue-400" key={genres.id}>
+                  <Link href={`movies/${genres.names}`}>{genres.name}</Link>
                 </div>
               )
             })}
@@ -41,10 +38,8 @@ const NavBar = () => {
           <div className="absolute top-full left-0 bg-white py-2 px-1 hidden group-hover:flex flex-col text-black z-50 text-sm">
             {movies.map((genres, id) => {
               return (
-                <div className=" hover:bg-blue-400">
-                  <Link href={`movies/${genres}`} key={id}>
-                    {genres}
-                  </Link>
+                <div className=" hover:bg-blue-400" key={id}>
+                  <Link href={`movies/${genres}`}>{genres}</Link>
                 </div>
               )
             })}
