@@ -1,79 +1,55 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { fetchMoviesGenresList } from "@/lib/data"
 
 const NavBar = () => {
-  const [showGenres, setShowGenres] = useState(false)
-  const [showMovies, setShowMovies] = useState(false)
-  const [showActors, setShowActors] = useState(false)
+  const [genresList, seGenresList] = useState([])
 
-  const toggleGenres = () => {
-    setShowGenres(!showGenres)
-    setShowMovies(false)
-    setShowActors(false)
-  }
+  useEffect(() => {
+    const getGenresList = async () => {
+      const genresList = await fetchMoviesGenresList()
+      seGenresList(genresList.genres)
+    }
+    return getGenresList
+  }, [])
 
-  const toggleMovies = () => {
-    setShowMovies(!showMovies)
-    setShowGenres(false)
-    setShowActors(false)
-  }
-
-  const toggleActors = () => {
-    setShowActors(!showActors)
-    setShowGenres(false)
-    setShowMovies(false)
-  }
-
+  const movies = ["Latest", "Popular", "Top Rated", "Upcoming"]
   return (
-    <nav className="flex justify-between items-center h-[80px] bg-black text-white p-5">
+    <nav className="flex justify-around items-center h-[80px] bg-black text-white py-5 px-14">
       <div>
         <Link href={"/"}>Logo</Link>
       </div>
-      <div className="flex">
-        <div className="relative mr-4">
-          <button
-            onMouseEnter={toggleGenres}
-            onMouseLeave={toggleGenres}
-            className="focus:outline-none"
-          >
-            Genres
-          </button>
-          {showGenres && (
-            <div className="absolute top-full left-0 bg-white p-2">
-              <Link href={"/genre/action"}>Action</Link>
-              <Link href={"/genre/comedy"}>Comedy</Link>
-            </div>
-          )}
+      <div className="flex ml-10 w-full">
+        <div className="relative group mr-4">
+          <button className="focus:outline-none">Genres</button>
+          <div className="absolute top-full left-0 bg-white py-2 px-1 hidden group-hover:flex flex-col text-black z-50 text-sm">
+            {genresList.map((genres) => {
+              return (
+                <div className=" hover:bg-blue-400">
+                  <Link href={`movies/${genres.name}`} key={genres.id}>
+                    {genres.name}
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
         </div>
-        <div className="relative mr-4">
-          <button
-            onMouseEnter={toggleMovies}
-            onMouseLeave={toggleMovies}
-            className="focus:outline-none"
-          >
-            Movies
-          </button>
-          {showMovies && (
-            <div className="absolute top-full left-0 bg-white p-2">
-              <Link href={"/movies"}>All Movies</Link>
-              <Link href={"/movies/popular"}>Popular Movies</Link>
-            </div>
-          )}
+        <div className="relative group mr-4">
+          <button className="focus:outline-none">Movies</button>
+          <div className="absolute top-full left-0 bg-white py-2 px-1 hidden group-hover:flex flex-col text-black z-50 text-sm">
+            {movies.map((genres, id) => {
+              return (
+                <div className=" hover:bg-blue-400">
+                  <Link href={`movies/${genres}`} key={id}>
+                    {genres}
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
         </div>
-        <div className="relative">
-          <button
-            onMouseEnter={toggleActors}
-            onMouseLeave={toggleActors}
-            className="focus:outline-none"
-          >
-            Actors
-          </button>
-          {showActors && (
-            <div className="absolute top-full left-0 bg-white p-2">
-              <Link href={"/actors"}>All Actors</Link>
-              <Link href={"/actors/popular"}>Popular Actors</Link>
-            </div>
-          )}
+        <div className="focus:outline-none">
+          <Link href={"/actors"}>Actors</Link>
         </div>
       </div>
       <div>Search</div>

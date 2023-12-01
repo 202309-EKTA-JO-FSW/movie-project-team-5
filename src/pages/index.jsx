@@ -15,7 +15,7 @@ export async function getStaticProps() {
 
 export default function Home({ latestMovies, popularMovies }) {
   // collection component return a collextion of card with row scrolling
-  console.log(popularMovies)
+
   return (
     <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
       <LatestMovies data={latestMovies} />
