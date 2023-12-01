@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { fetchMoviesGenresList } from "@/lib/data"
+import SearchBar from "./SearchBar"
+
 
 const NavBar = () => {
   const [genresList, seGenresList] = useState([])
@@ -52,7 +54,9 @@ const NavBar = () => {
           <Link href={"/actors"}>Actors</Link>
         </div>
       </div>
-      <div>Search</div>
+      <div>
+        <SearchBar />
+      </div>
     </nav>
   )
 }
