@@ -15,3 +15,9 @@ export const latestMoviesUrl = () => {
 export const popularMoviesUrl = () => {
   return `${BASE_URL}/movie/popular?api_key=${API_KEY}`
 }
+
+// Movies genres list
+
+export const moviesGenresListUrl = () => {
+  return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
+}
