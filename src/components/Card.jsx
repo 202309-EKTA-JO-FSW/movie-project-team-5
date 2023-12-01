@@ -11,6 +11,7 @@ const Card = ({ category }) => {
           alt={category.title}
           width={200}
           height={0}
+          priority={true}
         />
         <div>
           <h1 className="text-sm px-2 py-1 truncate absolute bottom-0 text-center w-full opacity bg-black bg-opacity-50">
