@@ -1,4 +1,4 @@
-import { getImage } from "@/lib/util"
+import { getImage } from "@/lib/utils"
 import Image from "next/image"
 
 const Card = ({ category }) => {
