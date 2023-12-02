@@ -14,7 +14,7 @@ export const getReleaseYear = (date) => {
 
 // latest movies
 export const latestMoviesUrl = () => {
-  return `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
+  return `${BASE_URL}/discover/movie?include_video=false&language=en-US&page=1&release_date.gte=now&sort_by=popularity.desc&api_key=${API_KEY}`
 }
 
 // popular movies

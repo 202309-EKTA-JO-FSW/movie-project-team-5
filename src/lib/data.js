@@ -10,6 +10,7 @@ export const fetchLatestMovies = async () => {
   // await new Promise((resolve) => setTimeout(resolve, 5000))
   try {
     const res = await fetch(latestMoviesUrl())
+    console.log(latestMoviesUrl())
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
