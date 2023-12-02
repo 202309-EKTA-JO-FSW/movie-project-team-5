@@ -17,6 +17,11 @@ export const latestMoviesUrl = () => {
   return `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
 }
 
+//Actors
+export const popularPeoplesUrl = () => {
+  return `${BASE_URL}/person/popular?api_key=${API_KEY}`;
+};
+
 // popular movies
 export const popularMoviesUrl = () => {
   return `${BASE_URL}/movie/popular?api_key=${API_KEY}`

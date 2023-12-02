@@ -34,6 +34,15 @@ export const fetchMoviesGenresList = async () => {
   }
 }
 
+export const fetchPopularPeople = async () => {
+  try {
+    const res = await fetch(popularPeoplesUrl())
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Popular People")
+  }
+}
+
 export const fetchSearchMovies = async (query) => {
   try {
     const res = await fetch(searchMoviesUrl(query))
