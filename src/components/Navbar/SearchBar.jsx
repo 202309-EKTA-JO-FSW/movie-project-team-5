@@ -1,6 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+"use client"
+import { fetchSearchMovies } from "@/lib/data"
+>>>>>>> f4cde26 (fetching search data from searchParams)
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
+import SearchDropDown from "./SearchDropDown"
 
 const SearchBar = () => {
   const searchParams = useSearchParams()
@@ -61,7 +68,9 @@ const SearchBar = () => {
           defaultValue={searchParams.get("query")?.toString()}
 >>>>>>> 2f9755c (add query in link when write in search engin #5)
         />
-        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded"></div>
+        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded">
+          <SearchDropDown />
+        </div>
       </div>
     </div>
   )

@@ -21,3 +21,9 @@ export const popularMoviesUrl = () => {
 export const moviesGenresListUrl = () => {
   return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
 }
+
+// search movies
+export const searchMoviesUrl = (query) => {
+  console.log(`${BASE_URL}/search/movie?query=${"s"}&api_key=${API_KEY}`)
+  return `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+}
