@@ -1,8 +1,9 @@
 "use client"
 
 import { fetchSearchMovies } from "@/lib/data"
-import { getImage } from "@/lib/utils"
+import { getImage, getReleaseYear } from "@/lib/utils"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
@@ -28,23 +29,27 @@ const SearchDropDown = () => {
       <div className="h-[300px] p-1">
         {searchMovies.map((movie) => {
           return (
-            <div
-              className="flex items-start border border-black p-1 rounded my-2"
-              key={movie.id}
-            >
-              <Image
-                src={getImage(movie.poster_path)}
-                alt={`${movie.title} image`}
-                width={200}
-                height={0}
-                priority={true}
-                className="w-16 mr-3"
-              />
-              <div>
-                <p className="text-sm">{movie.title}</p>
-                <p>{movie.year}</p>
+            <Link href={`movies/${movie.id}`}>
+              <div
+                className="flex items-start  p-1 rounded my-2 hover:bg-blue-300"
+                key={movie.id}
+              >
+                <Image
+                  src={getImage(movie.poster_path)}
+                  alt={`${movie.title} image`}
+                  width={200}
+                  height={0}
+                  priority={true}
+                  className="w-16 mr-3 rounded"
+                />
+                <div>
+                  <p className="text-md font-bold">{movie.title}</p>
+                  <p className="text-sm text-gray-700">
+                    {getReleaseYear(movie.release_date)}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           )
         })}
       </div>

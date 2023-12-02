@@ -69,7 +69,7 @@ const SearchBar = () => {
           defaultValue={searchParams.get("query")?.toString()}
 >>>>>>> 2f9755c (add query in link when write in search engin #5)
         />
-        <div className="absolute top-[100%] bg-white text-black z-50 mt-1 rounded overflow-y-auto">
+        <div className="absolute top-[100%] transition duration-300 bg-white text-black z-50 mt-1 rounded overflow-y-auto">
           <SearchDropDown />
         </div>
       </div>
