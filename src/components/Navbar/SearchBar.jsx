@@ -1,4 +1,8 @@
+"use client"
+import { fetchSearchMovies } from "@/lib/data"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
+import SearchDropDown from "./SearchDropDown"
 
 const SearchBar = () => {
   const searchParams = useSearchParams()
@@ -28,7 +32,9 @@ const SearchBar = () => {
           onChange={(e) => handleChanges(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
-        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded"></div>
+        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded">
+          <SearchDropDown />
+        </div>
       </div>
     </div>
   )

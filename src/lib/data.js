@@ -1,4 +1,9 @@
-import { latestMoviesUrl, moviesGenresListUrl, popularMoviesUrl } from "./utils"
+import {
+  latestMoviesUrl,
+  moviesGenresListUrl,
+  popularMoviesUrl,
+  searchMoviesUrl,
+} from "./utils"
 
 // fetch latest movies
 export const fetchLatestMovies = async () => {
@@ -23,6 +28,15 @@ export const fetchPopularMovies = async () => {
 export const fetchMoviesGenresList = async () => {
   try {
     const res = await fetch(moviesGenresListUrl())
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Latest Movies:", error)
+  }
+}
+
+export const fetchSearchMovies = async (query) => {
+  try {
+    const res = await fetch(searchMoviesUrl(query))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
