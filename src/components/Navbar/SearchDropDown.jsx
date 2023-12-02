@@ -1,5 +1,4 @@
 "use client"
-
 import { fetchSearchMovies } from "@/lib/data"
 import { getImage, getReleaseYear } from "@/lib/utils"
 import Image from "next/image"
