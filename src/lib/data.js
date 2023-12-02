@@ -7,8 +7,8 @@ import {
 
 // fetch latest movies
 export const fetchLatestMovies = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 5000))
   try {
+    // await new Promise((resolve) => setTimeout(resolve, 5000))
     const res = await fetch(latestMoviesUrl())
     console.log(latestMoviesUrl())
     return await res.json()
