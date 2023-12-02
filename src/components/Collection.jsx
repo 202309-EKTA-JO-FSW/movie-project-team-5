@@ -9,8 +9,8 @@ const Collection = ({ data, title }) => {
       <div className="text-white flex items-center overflow-x-auto">
         {data.map((movie) => {
           return (
-            <div>
-              <Card category={movie} key={movie.id} />
+            <div key={movie.id}>
+              <Card category={movie} />
             </div>
           )
         })}
