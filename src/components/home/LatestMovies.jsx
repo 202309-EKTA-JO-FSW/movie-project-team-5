@@ -4,7 +4,7 @@ import Collection from "../Collection"
 const LatestMovies = ({ data }) => {
   return (
     <div>
-      <Collection data={data} title={"Latest Movies"} />
+      <Collection data={data} title={"What's new?"} />
     </div>
   )
 }

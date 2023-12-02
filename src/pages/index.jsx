@@ -19,7 +19,6 @@ export default function Home({ latestMovies, popularMovies }) {
   return (
     <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
       <LatestMovies data={latestMovies} />
-      <PopularMovies data={popularMovies} />
     </main>
   )
 }
