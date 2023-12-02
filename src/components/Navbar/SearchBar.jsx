@@ -19,7 +19,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div>
+      <div className="relative group">
         <input
           type="text"
           name="search"
@@ -28,6 +28,7 @@ const SearchBar = () => {
           onChange={(e) => handleChanges(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
+        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded"></div>
       </div>
     </div>
   )
