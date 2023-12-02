@@ -6,6 +6,12 @@ export const getImage = (img) => {
   return `https://image.tmdb.org/t/p/original/${img}`
 }
 
+// get year
+export const getReleaseYear = (date) => {
+  const year = date.split("-")
+  return year[0]
+}
+
 // latest movies
 export const latestMoviesUrl = () => {
   return `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`

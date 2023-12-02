@@ -33,7 +33,7 @@ const SearchBar = () => {
           onChange={(e) => handleChanges(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
-        <div className="absolute top-[100%] bg-white text-black z-50 mt-1 rounded overflow-y-auto">
+        <div className="absolute top-[100%] transition duration-300 bg-white text-black z-50 mt-1 rounded overflow-y-auto">
           <SearchDropDown />
         </div>
       </div>
