@@ -20,7 +20,6 @@ const SearchDropDown = () => {
         console.error("cannot found any movies")
       }
     }
-    console.log(searchMovies)
 
     getMovies()
   }, [query.query])
@@ -29,11 +28,8 @@ const SearchDropDown = () => {
       <div className="h-[300px] p-1">
         {searchMovies.map((movie) => {
           return (
-            <Link href={`movies/${movie.id}`}>
-              <div
-                className="flex items-start  p-1 rounded my-2 hover:bg-blue-300"
-                key={movie.id}
-              >
+            <Link href={`movies/${movie.id}`} key={movie.id}>
+              <div className="flex items-start  p-1 rounded my-2 hover:bg-blue-300">
                 <Image
                   src={getImage(movie.poster_path)}
                   alt={`${movie.title} image`}

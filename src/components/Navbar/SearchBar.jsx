@@ -1,8 +1,5 @@
-
 "use client"
-import { fetchSearchMovies } from "@/lib/data"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
 import SearchDropDown from "./SearchDropDown"
 import { useDebouncedCallback } from "use-debounce"
 
@@ -10,19 +7,6 @@ const SearchBar = () => {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
-
-import { useSearchParams } from "next/navigation"
-
-const SearchBar = () => {
-  const searchParams = useSearchParams()
-
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-
-const SearchBar = () => {
-  const searchParams = useSearchParams()
-  const pathname = usePathname()
-  const { replace } = useRouter()
-
 
   const handleChanges = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams)
@@ -36,7 +20,6 @@ const SearchBar = () => {
 
     replace(`${pathname}${queryString}`)
   }, 300)
-
 
   return (
     <div>
