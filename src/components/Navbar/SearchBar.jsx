@@ -8,6 +8,7 @@ import { fetchSearchMovies } from "@/lib/data"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import SearchDropDown from "./SearchDropDown"
+import { useDebouncedCallback } from "use-debounce"
 
 const SearchBar = () => {
   const searchParams = useSearchParams()
@@ -28,7 +29,7 @@ const SearchBar = () => {
   const { replace } = useRouter()
 >>>>>>> 2f9755c (add query in link when write in search engin #5)
 
-  const handleChanges = (term) => {
+  const handleChanges = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams)
     if (term) {
       params.set("query", term)
@@ -42,7 +43,7 @@ const SearchBar = () => {
     const queryString = params.toString() ? `?${params.toString()}` : ""
 
     replace(`${pathname}${queryString}`)
-  }
+  }, 300)
 
 <<<<<<< HEAD
 =======

@@ -14,7 +14,7 @@ const SearchDropDown = () => {
         const data = await fetchSearchMovies(query.query)
         setSearchMovies(data.results)
       } catch (error) {
-        console.error("cannot found any movie")
+        console.error("cannot found any movies")
       }
     }
 
