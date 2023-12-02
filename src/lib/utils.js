@@ -24,6 +24,5 @@ export const moviesGenresListUrl = () => {
 
 // search movies
 export const searchMoviesUrl = (query) => {
-  console.log(`${BASE_URL}/search/movie?query=${"s"}&api_key=${API_KEY}`)
   return `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
 }

@@ -24,7 +24,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <div className="relative group">
+      <div className="relative group w-[270px]">
         <input
           type="text"
           name="search"
@@ -33,7 +33,7 @@ const SearchBar = () => {
           onChange={(e) => handleChanges(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
-        <div className="absolute top-[100%] bg-white text-black z-50 w-full mt-1 rounded">
+        <div className="absolute top-[100%] bg-white text-black z-50 mt-1 rounded overflow-y-auto">
           <SearchDropDown />
         </div>
       </div>
