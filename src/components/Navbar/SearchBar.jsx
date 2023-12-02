@@ -3,13 +3,14 @@ import { fetchSearchMovies } from "@/lib/data"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import SearchDropDown from "./SearchDropDown"
+import { useDebouncedCallback } from "use-debounce"
 
 const SearchBar = () => {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
 
-  const handleChanges = (term) => {
+  const handleChanges = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams)
     if (term) {
       params.set("query", term)
@@ -19,7 +20,7 @@ const SearchBar = () => {
     const queryString = params.toString() ? `?${params.toString()}` : ""
 
     replace(`${pathname}${queryString}`)
-  }
+  }, 300)
 
   return (
     <div>
