@@ -1,4 +1,5 @@
 import LatestMovies from "@/components/home/LatestMovies"
+import PopularMovies from "@/components/home/PopularMovies"
 import { fetchLatestMovies, fetchPopularMovies } from "@/lib/data"
 
 export async function getStaticProps() {
@@ -13,7 +14,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ latestMovies }) {
+export default function Home({ latestMovies, popularMovies }) {
   // collection component return a collextion of card with row scrolling
   if (!latestMovies) {
     return <h1 className="text-xl">Loading.....</h1>
@@ -21,6 +22,7 @@ export default function Home({ latestMovies }) {
   return (
     <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
       <LatestMovies data={latestMovies} />
+      <PopularMovies data={popularMovies} />
     </main>
   )
 }
