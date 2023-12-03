@@ -1,26 +1,30 @@
 import React from "react"
-import LatestMovies from "@/components/home/LatestMovies"
 import { fetchLatestMovies } from "@/lib/data"
+import Card from '../components/Card'
 
 export async function getStaticProps() {
-  const latestMovies = await fetchLatestMovies()
-  
+  // Attempt to fetch latest movies
+  const moviesResponse = await fetchLatestMovies();
 
-  return {
-    props: {
-      latestMovies: latestMovies.results
-    },
-  }
+  // If successful, this line will execute, otherwise it will throw an error
+  const latestMovies = await moviesResponse.json();
+
+  // Return the props object
+  return { props: { latestMovies } };
 }
 
 const Movies = ({latestMovies}) => {
-  if (!latestMovies) {
-    return <h1 className="text-xl">Loading.....</h1>
-  }
   return (
-    <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
-      <LatestMovies data={latestMovies} />
-    </main>
-  )
-  }
+    <div>
+    <h1>Latest Movies</h1>
+    <div className="flex flex-wrap">
+      {latestMovies.map((movie) => (
+        <Card key={movie.id} category={movie} />
+      ))}
+    </div>
+  </div>
+  );
+};
+  
+
 export default Movies;
