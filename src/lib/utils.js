@@ -12,9 +12,19 @@ export const getReleaseYear = (date) => {
   return year[0]
 }
 
+// search movies
+export const searchMoviesUrl = (query) => {
+  return `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+}
+
+// Movies genres list
+export const moviesGenresListUrl = () => {
+  return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
+}
+
 // latest movies
 export const latestMoviesUrl = () => {
-  return `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
+  return `${BASE_URL}/movie/now_playing?page=1&api_key=${API_KEY}`
 }
 
 // popular movies
@@ -26,12 +36,7 @@ export const topRatedMoviesUrl = () => {
   return `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
 }
 
-// Movies genres list
-export const moviesGenresListUrl = () => {
-  return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
-}
-
-// search movies
-export const searchMoviesUrl = (query) => {
-  return `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`
+// top rated movies
+export const upcomingMoviesUrl = (page = "1") => {
+  return `${BASE_URL}/movie/upcoming?page=${page.toString()}&api_key=${API_KEY}`
 }
