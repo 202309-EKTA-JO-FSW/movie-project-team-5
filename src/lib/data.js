@@ -3,6 +3,8 @@ import {
   moviesGenresListUrl,
   popularMoviesUrl,
   searchMoviesUrl,
+  topRatedMoviesUrl,
+  upcomingMoviesUrl,
 } from "./utils"
 
 // fetch latest movies
@@ -50,7 +52,17 @@ export const fetchSearchMovies = async (query) => {
 // fetch top rated movies
 export const fetchTopRatedMovies = async () => {
   try {
-    const res = await fetch(searchMoviesUrl())
+    const res = await fetch(topRatedMoviesUrl())
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Latest Movies:", error)
+  }
+}
+
+// fetch top rated movies
+export const fetchUpcomingMovies = async (page = "1") => {
+  try {
+    const res = await fetch(upcomingMoviesUrl(page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
