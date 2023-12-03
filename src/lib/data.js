@@ -17,6 +17,7 @@ export const fetchLatestMovies = async () => {
   }
 }
 
+// fetch popular movies
 export const fetchPopularMovies = async () => {
   try {
     const res = await fetch(popularMoviesUrl())
@@ -26,6 +27,7 @@ export const fetchPopularMovies = async () => {
   }
 }
 
+// fetch genres list
 export const fetchMoviesGenresList = async () => {
   try {
     const res = await fetch(moviesGenresListUrl())
@@ -35,9 +37,20 @@ export const fetchMoviesGenresList = async () => {
   }
 }
 
+// fetch movies depending on user input
 export const fetchSearchMovies = async (query) => {
   try {
     const res = await fetch(searchMoviesUrl(query))
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Latest Movies:", error)
+  }
+}
+
+// fetch top rated movies
+export const fetchTopRatedMovies = async () => {
+  try {
+    const res = await fetch(searchMoviesUrl())
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
