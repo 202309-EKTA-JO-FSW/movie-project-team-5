@@ -27,7 +27,9 @@ const NavBar = () => {
             {genresList.map((genres) => {
               return (
                 <div className=" hover:bg-blue-400" key={genres.id}>
-                  <Link href={`/movies/${genres.names}`}>{genres.name}</Link>
+                  <Link href={`/movies/${genres.name.toLocaleLowerCase()}`}>
+                    {genres.name}
+                  </Link>
                 </div>
               )
             })}
