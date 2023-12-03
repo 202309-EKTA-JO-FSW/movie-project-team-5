@@ -14,7 +14,7 @@ const NavBar = () => {
     return getGenresList
   }, [])
 
-  const movies = ["Latest", "Popular", "Top Rated", "Upcoming"]
+  const movies = ["Latest", "Popular", "Top_Rated", "Upcoming"]
   return (
     <nav className="flex justify-around items-center h-[80px] bg-black text-white py-5 px-14">
       <div>
@@ -27,7 +27,7 @@ const NavBar = () => {
             {genresList.map((genres) => {
               return (
                 <div className=" hover:bg-blue-400" key={genres.id}>
-                  <Link href={`movies/${genres.names}`}>{genres.name}</Link>
+                  <Link href={`/movies/${genres.names}`}>{genres.name}</Link>
                 </div>
               )
             })}
@@ -39,7 +39,15 @@ const NavBar = () => {
             {movies.map((genres, id) => {
               return (
                 <div className=" hover:bg-blue-400" key={id}>
-                  <Link href={`movies/${genres}`}>{genres}</Link>
+                  <Link
+                    href={
+                      genres === "Latest"
+                        ? "/movies"
+                        : `/movies/${genres.toLocaleLowerCase()}`
+                    }
+                  >
+                    {genres}
+                  </Link>
                 </div>
               )
             })}
