@@ -24,11 +24,11 @@ const SearchDropDown = () => {
   }, [query.query])
   if (query.query) {
     return (
-      <div className="h-[300px] p-1">
+      <div className="h-[300px] px-2 py-1">
         {searchMovies.map((movie) => {
           return (
             <Link href={`movies/${movie.id}`} key={movie.id}>
-              <div className="flex items-start  p-1 rounded my-2 hover:bg-blue-300">
+              <div className="flex items-start p-2 rounded hover:bg-cyan-600">
                 <Image
                   src={getImage(movie.poster_path)}
                   alt={`${movie.title} image`}
@@ -37,7 +37,7 @@ const SearchDropDown = () => {
                   priority={true}
                   className="w-16 mr-3 rounded"
                 />
-                <div>
+                <div className="text-left">
                   <p className="text-md font-bold">{movie.title}</p>
                   <p className="text-sm text-gray-700">
                     {getReleaseYear(movie.release_date)}
