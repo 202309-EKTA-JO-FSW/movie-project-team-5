@@ -4,10 +4,8 @@ import Card from '../components/Card'
 
 export async function getStaticProps() {
   // Attempt to fetch latest movies
-  const moviesResponse = await fetchLatestMovies();
+  const latestMovies  = await fetchLatestMovies();
 
-  // If successful, this line will execute, otherwise it will throw an error
-  const latestMovies = await moviesResponse.json();
 
   // Return the props object
   return { props: { latestMovies } };
