@@ -11,7 +11,7 @@ const NavBar = () => {
       const genresList = await fetchMoviesGenresList()
       seGenresList(genresList.genres)
     }
-    return getGenresList
+    getGenresList()
   }, [])
 
   const genres = genresList.map((genres) => genres.name)
