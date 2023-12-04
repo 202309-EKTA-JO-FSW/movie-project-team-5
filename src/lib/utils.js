@@ -23,20 +23,20 @@ export const moviesGenresListUrl = () => {
 }
 
 // latest movies
-export const latestMoviesUrl = () => {
-  return `${BASE_URL}/movie/now_playing?page=1&api_key=${API_KEY}`
+export const latestMoviesUrl = (page = "1") => {
+  return `${BASE_URL}/movie/now_playing?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
 }
 
 // popular movies
-export const popularMoviesUrl = () => {
-  return `${BASE_URL}/movie/popular?api_key=${API_KEY}`
+export const popularMoviesUrl = (page = "1") => {
+  return `${BASE_URL}/movie/popular?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
 }
 // top rated movies
-export const topRatedMoviesUrl = () => {
-  return `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+export const topRatedMoviesUrl = (page = "1") => {
+  return `${BASE_URL}/movie/top_rated?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
 }
 
 // top rated movies
 export const upcomingMoviesUrl = (page = "1") => {
-  return `${BASE_URL}/movie/upcoming?page=${page.toString()}&api_key=${API_KEY}`
+  return `${BASE_URL}/movie/upcoming?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
 }
