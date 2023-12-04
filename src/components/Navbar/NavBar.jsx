@@ -14,6 +14,9 @@ const NavBar = () => {
     return getGenresList
   }, [])
 
+  const genres = genresList.map((genres) => genres.name)
+  console.log(genres)
+
   const movies = ["Latest", "Popular", "Top_Rated", "Upcoming"]
   return (
     <nav className="flex flex-col items-center justify-center h-[100px] bg-black text-white sm:flex-row">
@@ -27,14 +30,11 @@ const NavBar = () => {
               Genres
             </button>
             <div className="absolute top-full left-0 bg-slate-100 shadow-lg shadow-black py-2 px-3 rounded hidden group-hover:flex flex-col text-black z-50 text-sm h-[200px] overflow-y-auto">
-              {genresList.map((genres) => {
+              {genres.map((name, id) => {
                 return (
-                  <div
-                    className="hover:bg-cyan-600 p-1 rounded"
-                    key={genres.id}
-                  >
-                    <Link href={`/movies/${genres.name.toLocaleLowerCase()}`}>
-                      {genres.name}
+                  <div className="hover:bg-cyan-600 p-1 rounded" key={id}>
+                    <Link href={`/movies/${name.toLocaleLowerCase()}`}>
+                      {name}
                     </Link>
                   </div>
                 )
