@@ -30,17 +30,18 @@ export default function Home({
   popularMovies,
   topRatedMovies,
   upcomingMovies,
+  name,
 }) {
   // collection component return a collextion of card with row scrolling
   if (!latestMovies) {
     return <h1 className="text-xl">Loading.....</h1>
   }
   return (
-    <main className="h-[100vh] mx-[20px] md:mx-[100px] mt-[20px]">
+    <section className=" m-[20px] md:mx-[100px]">
       <LatestMovies data={latestMovies} />
       <PopularMovies data={popularMovies} />
       <TopRatedMovies data={topRatedMovies} />
       <UpcomingMovies data={upcomingMovies} />
-    </main>
+    </section>
   )
 }

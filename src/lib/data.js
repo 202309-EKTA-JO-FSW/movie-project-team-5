@@ -7,28 +7,6 @@ import {
   upcomingMoviesUrl,
 } from "./utils"
 
-// fetch latest movies
-export const fetchLatestMovies = async () => {
-  try {
-    // await new Promise((resolve) => setTimeout(resolve, 5000))
-    const res = await fetch(latestMoviesUrl())
-    console.log(latestMoviesUrl())
-    return await res.json()
-  } catch (error) {
-    console.error("Error fetching Latest Movies:", error)
-  }
-}
-
-// fetch popular movies
-export const fetchPopularMovies = async () => {
-  try {
-    const res = await fetch(popularMoviesUrl())
-    return await res.json()
-  } catch (error) {
-    console.error("Error fetching Latest Movies:", error)
-  }
-}
-
 // fetch genres list
 export const fetchMoviesGenresList = async () => {
   try {
@@ -49,10 +27,22 @@ export const fetchSearchMovies = async (query) => {
   }
 }
 
-// fetch top rated movies
-export const fetchTopRatedMovies = async () => {
+// fetch latest movies
+export const fetchLatestMovies = async (page) => {
   try {
-    const res = await fetch(topRatedMoviesUrl())
+    // await new Promise((resolve) => setTimeout(resolve, 5000))
+    const res = await fetch(latestMoviesUrl(page))
+    console.log(latestMoviesUrl(page))
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Latest Movies:", error)
+  }
+}
+
+// fetch popular movies
+export const fetchPopularMovies = async (page) => {
+  try {
+    const res = await fetch(popularMoviesUrl(page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
@@ -60,6 +50,16 @@ export const fetchTopRatedMovies = async () => {
 }
 
 // fetch top rated movies
+export const fetchTopRatedMovies = async (page) => {
+  try {
+    const res = await fetch(topRatedMoviesUrl(page))
+    return await res.json()
+  } catch (error) {
+    console.error("Error fetching Latest Movies:", error)
+  }
+}
+
+// fetch upcoming movies
 export const fetchUpcomingMovies = async (page = "1") => {
   try {
     const res = await fetch(upcomingMoviesUrl(page))
