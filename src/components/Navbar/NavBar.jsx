@@ -3,19 +3,20 @@ import Link from "next/link"
 import { fetchMoviesGenresList } from "@/lib/data"
 import SearchBar from "./SearchBar"
 
-const NavBar = () => {
-  const [genresList, seGenresList] = useState([])
+const NavBar = ({ genresList }) => {
+  console.log(genresList)
+  // const [genresList, seGenresList] = useState([])
 
-  useEffect(() => {
-    const getGenresList = async () => {
-      const genresList = await fetchMoviesGenresList()
-      seGenresList(genresList.genres)
-    }
-    getGenresList()
-  }, [])
+  // useEffect(() => {
+  //   const getGenresList = async () => {
+  //     const genresList = await fetchMoviesGenresList()
+  //     seGenresList(genresList.genres)
+  //   }
+  //   getGenresList()
+  // }, [])
 
-  const genres = genresList.map((genres) => genres.name)
-  console.log(genres)
+  // const genres = genresList.map((genres) => genres.name)
+  // console.log(genres)
 
   const movies = ["Latest", "Popular", "Top_Rated", "Upcoming"]
   return (
@@ -30,10 +31,15 @@ const NavBar = () => {
               Genres
             </button>
             <div className="absolute top-full left-0 bg-slate-100 shadow-lg shadow-black py-2 px-3 rounded hidden group-hover:flex flex-col text-black z-50 text-sm h-[200px] overflow-y-auto">
-              {genres.map((name, id) => {
+              {genresList.map((genres) => {
                 return (
-                  <Link href={`/movies/${name.toLocaleLowerCase()}`} key={id}>
-                    <div className="hover:bg-cyan-600 p-1 rounded">{name}</div>
+                  <Link
+                    href={`/movies/${genres.name.toLocaleLowerCase()}`}
+                    key={genres.id}
+                  >
+                    <div className="hover:bg-cyan-600 p-1 rounded">
+                      {genres.name}
+                    </div>
                   </Link>
                 )
               })}
