@@ -1,5 +1,5 @@
 import React from "react"
-// import MovieInfo from "./MovieInfo"
+import MovieInfo from "./MovieInfo"
 
 export async function getStaticPaths() {
   const response = await fetch(

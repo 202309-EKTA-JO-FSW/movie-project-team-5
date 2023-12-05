@@ -19,7 +19,7 @@ const MovieInfo = ({ movie }) => {
     spoken_languages,
   }
   // check the image url ...........
-  const imgUrl = `https://${backdrop_path}`
+  const imgUrl = `https://image.tmdb.org/t/p/w500/${backdrop_path}`
 
   return (
     <div>
@@ -49,7 +49,7 @@ const MovieInfo = ({ movie }) => {
       {production_companies.map((company) => (
         <div key={company.id}>
           <img
-            src={`https://${company.logo_path}`} // check the source here
+            src={`https://image.tmdb.org/t/p/w500/${company.logo_path}`} // check the source here
             alt={company.name}
           />
           <p>{company.name}</p>

@@ -5,7 +5,8 @@ export const fetchLatestMovies = async () => {
   // await new Promise((resolve) => setTimeout(resolve, 5000))
 
   const res = await fetch(latestMoviesUrl())
-  return await res.json()
+  const data = await res.json()
+  return data
 }
 
 export const fetchPopularMovies = async () => {
