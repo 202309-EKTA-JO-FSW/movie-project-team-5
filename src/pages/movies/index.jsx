@@ -1,4 +1,5 @@
 import React from "react"
+
 import Card from "@/components/Card"
 import { fetchLatestMovies } from "@/lib/data"
 import { useState } from "react"
@@ -53,3 +54,4 @@ const Movies = ({ initialMovies }) => {
 };
 
 export default Movies;
+
