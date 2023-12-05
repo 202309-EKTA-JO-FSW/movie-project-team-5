@@ -9,6 +9,7 @@ const SearchBar = () => {
   const { replace } = useRouter()
 
   const handleChanges = useDebouncedCallback((term) => {
+    // when user type searchParams will create a query
     const params = new URLSearchParams(searchParams)
     if (term) {
       params.set("query", term)
@@ -16,8 +17,8 @@ const SearchBar = () => {
       params.delete("query")
     }
 
+    // the query will be added by replacing with new path
     const queryString = params.toString() ? `?${params.toString()}` : ""
-
     replace(`${pathname}${queryString}`)
   }, 300)
 

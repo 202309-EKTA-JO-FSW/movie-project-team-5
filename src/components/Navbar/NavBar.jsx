@@ -4,20 +4,7 @@ import { fetchMoviesGenresList } from "@/lib/data"
 import SearchBar from "./SearchBar"
 
 const NavBar = ({ genresList }) => {
-  console.log(genresList)
-  // const [genresList, seGenresList] = useState([])
-
-  // useEffect(() => {
-  //   const getGenresList = async () => {
-  //     const genresList = await fetchMoviesGenresList()
-  //     seGenresList(genresList.genres)
-  //   }
-  //   getGenresList()
-  // }, [])
-
-  // const genres = genresList.map((genres) => genres.name)
-  // console.log(genres)
-
+  // movies drop down list
   const movies = ["Latest", "Popular", "Top_Rated", "Upcoming"]
   return (
     <nav className="flex flex-col items-center justify-center h-[100px] bg-black text-white sm:flex-row">
