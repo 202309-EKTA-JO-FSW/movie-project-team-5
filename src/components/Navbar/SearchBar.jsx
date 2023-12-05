@@ -9,6 +9,7 @@ const SearchBar = () => {
   const { replace } = useRouter()
 
   const handleChanges = useDebouncedCallback((term) => {
+    // when user type searchParams will create a query
     const params = new URLSearchParams(searchParams)
     if (term) {
       params.set("query", term)
@@ -16,8 +17,8 @@ const SearchBar = () => {
       params.delete("query")
     }
 
+    // the query will be added by replacing with new path
     const queryString = params.toString() ? `?${params.toString()}` : ""
-
     replace(`${pathname}${queryString}`)
   }, 300)
 
@@ -28,11 +29,11 @@ const SearchBar = () => {
           type="text"
           name="search"
           placeholder="search..."
-          className="p-1 border rounded text-black"
+          className="p-1 border-4 border-cyan-600 rounded placeholder-slate-500 bg-slate-100 text-black"
           onChange={(e) => handleChanges(e.target.value)}
           defaultValue={searchParams.get("query")?.toString()}
         />
-        <div className="absolute top-[100%] transition duration-300 bg-white text-black z-50 mt-1 rounded overflow-y-auto">
+        <div className="absolute top-[100%] transition duration-300 bg-slate-100 shadow-lg shadow-black text-black z-50 mt-2 rounded overflow-y-auto">
           <SearchDropDown />
         </div>
       </div>
