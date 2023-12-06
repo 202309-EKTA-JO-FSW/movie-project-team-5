@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import NavBar from "./Navbar/NavBar"
 import { fetchMoviesGenresList } from "@/lib/data"
+import { Provider } from "react-redux"
+import { store } from "@/app/store"
+import { Provider } from "react-redux"
 
 export default function Layout({ children }) {
   const [genresList, seGenresList] = useState([])
@@ -16,9 +19,11 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <NavBar genresList={genresList} />
-      <main className="text-white">{children}</main>
-      <footer>Footer</footer>
+      <Provider store={store}>
+        <NavBar genresList={genresList} />
+        <main className="text-white">{children}</main>
+        <footer>Footer</footer>
+      </Provider>
     </>
   )
 }
