@@ -11,8 +11,8 @@ const NavBar = ({ genresList }) => {
   return (
     <nav className="flex flex-col items-center justify-center h-[100px] bg-black text-white sm:flex-row">
       <div className="flex items-center w-full p-5 sm:ml-5">
-        <div className="md:text-lg text-cyan-600 font-bold">
-          <Link href={"/"}>Logo</Link>
+        <div className="md:text-2xl font-bold text-slate-300">
+          <Link href={"/"}>Movies Night</Link>
         </div>
         <div className="flex w-full justify-center sm:justify-around sm:w-[300px] sm:ml-10 ">
           <div className="relative group mr-4">
