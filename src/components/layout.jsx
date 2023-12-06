@@ -3,7 +3,6 @@ import NavBar from "./Navbar/NavBar"
 import { fetchMoviesGenresList } from "@/lib/data"
 import { Provider } from "react-redux"
 import { store } from "@/app/store"
-import { Provider } from "react-redux"
 
 export default function Layout({ children }) {
   const [genresList, seGenresList] = useState([])
