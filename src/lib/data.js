@@ -1,7 +1,7 @@
 import {
+  categoryMoviesUrl,
   latestMoviesUrl,
   moviesGenresListUrl,
-  popularMoviesUrl,
   searchMoviesUrl,
   topRatedMoviesUrl,
   upcomingMoviesUrl,
@@ -31,8 +31,8 @@ export const fetchSearchMovies = async (query) => {
 export const fetchLatestMovies = async (page) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 5000))
-    const res = await fetch(latestMoviesUrl(page))
-    console.log(latestMoviesUrl(page))
+
+    const res = await fetch(categoryMoviesUrl("now_playing", page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
@@ -42,7 +42,7 @@ export const fetchLatestMovies = async (page) => {
 // fetch popular movies
 export const fetchPopularMovies = async (page) => {
   try {
-    const res = await fetch(popularMoviesUrl(page))
+    const res = await fetch(categoryMoviesUrl("popular", page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
@@ -52,7 +52,7 @@ export const fetchPopularMovies = async (page) => {
 // fetch top rated movies
 export const fetchTopRatedMovies = async (page) => {
   try {
-    const res = await fetch(topRatedMoviesUrl(page))
+    const res = await fetch(categoryMoviesUrl("top_rated", page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)
@@ -62,7 +62,7 @@ export const fetchTopRatedMovies = async (page) => {
 // fetch upcoming movies
 export const fetchUpcomingMovies = async (page = "1") => {
   try {
-    const res = await fetch(upcomingMoviesUrl(page))
+    const res = await fetch(categoryMoviesUrl("upcoming", page))
     return await res.json()
   } catch (error) {
     console.error("Error fetching Latest Movies:", error)

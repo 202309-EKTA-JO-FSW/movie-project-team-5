@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
 import Link from "next/link"
-import { fetchMoviesGenresList } from "@/lib/data"
+
 import SearchBar from "./SearchBar"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { changeCategory } from "@/feature/category/categorySlice"
 
 const NavBar = ({ genresList }) => {
