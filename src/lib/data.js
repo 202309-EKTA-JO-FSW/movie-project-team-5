@@ -1,10 +1,7 @@
 import {
   categoryMoviesUrl,
-  latestMoviesUrl,
   moviesGenresListUrl,
   searchMoviesUrl,
-  topRatedMoviesUrl,
-  upcomingMoviesUrl,
 } from "./utils"
 
 // fetch genres list
