@@ -22,21 +22,7 @@ export const moviesGenresListUrl = () => {
   return `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
 }
 
-// latest movies
-export const latestMoviesUrl = (page = "1") => {
-  return `${BASE_URL}/movie/now_playing?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
-}
-
-// popular movies
-export const popularMoviesUrl = (page = "1") => {
-  return `${BASE_URL}/movie/popular?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
-}
-// top rated movies
-export const topRatedMoviesUrl = (page = "1") => {
-  return `${BASE_URL}/movie/top_rated?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
-}
-
-// top rated movies
-export const upcomingMoviesUrl = (page = "1") => {
-  return `${BASE_URL}/movie/upcoming?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
+// get movies depending on category movies
+export const categoryMoviesUrl = (category, page = "1") => {
+  return `${BASE_URL}/movie/${category}?language=en-US&page=${page.toString()}&api_key=${API_KEY}`
 }
