@@ -1,5 +1,5 @@
 import React from "react"
-import MovieInfo from "./MovieInfo"
+// import MovieInfo from "./MovieInfo"
 
 export async function getStaticPaths() {
   const response = await fetch(
@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
 }
 
 const Movie = ({ movie }) => {
-  return <MovieInfo movie={movie} />
+  // return <MovieInfo movie={movie} />
 }
 
 export default Movie
