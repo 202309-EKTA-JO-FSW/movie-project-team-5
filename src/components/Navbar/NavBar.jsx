@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeCategory } from "@/feature/category/categorySlice"
 
 const NavBar = ({ genresList }) => {
-  const category = useSelector((state) => state.category.value)
   const dispatch = useDispatch()
   // movies drop down list
   const movies = ["Latest", "Popular", "Top_Rated", "Upcoming"]
@@ -25,8 +24,11 @@ const NavBar = ({ genresList }) => {
               {genresList.map((genres) => {
                 return (
                   <Link
-                    href={`/movies/${genres.name.toLocaleLowerCase()}`}
+                    href={`/movies`}
                     key={genres.id}
+                    onClick={() =>
+                      dispatch(changeCategory(genres.name.toLowerCase()))
+                    }
                   >
                     <div className="hover:bg-cyan-600 p-1 rounded">
                       {genres.name}
@@ -43,15 +45,17 @@ const NavBar = ({ genresList }) => {
             <div className="absolute top-full left-0 bg-slate-100 shadow-lg shadow-black py-2 px-3 rounded hidden group-hover:flex flex-col text-black z-50 text-sm">
               {movies.map((genres, id) => {
                 return (
-                  <div
-                    className="hover:bg-cyan-600 p-1 rounded"
+                  <Link
+                    href={"/movies"}
                     key={id}
                     onClick={() =>
                       dispatch(changeCategory(genres.toLowerCase()))
                     }
                   >
-                    <Link href={"/movies"}>{genres}</Link>
-                  </div>
+                    <div className="hover:bg-cyan-600 p-1 rounded">
+                      {genres}
+                    </div>
+                  </Link>
                 )
               })}
             </div>
