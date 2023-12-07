@@ -45,7 +45,7 @@ const NavBar = ({ genresList }) => {
               {movies.map((genres, id) => {
                 return (
                   <Link
-                    href={"/movies"}
+                    href={`/movies?category=${genres.toLowerCase()}`}
                     key={id}
                     onClick={() =>
                       dispatch(changeCategory(genres.toLowerCase()))

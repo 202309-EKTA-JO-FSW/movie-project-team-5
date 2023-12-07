@@ -1,60 +1,84 @@
-import React from "react"
+import { categoryMoviesUrl } from "@/lib/utils";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Card from "@/components/Card";
+//import {fetchMoviesGenresList} from '@/lib/data'
 
-import Card from "@/components/Card"
-import { fetchLatestMovies } from "@/lib/data"
-import { useState } from "react"
-import { useSelector } from "react-redux"
 
-export async function getStaticProps() {
-  const initialMovies = await fetchLatestMovies(1)
-  return { props: { initialMovies: initialMovies.results } }
-}
 
-const Movies = ({ initialMovies }) => {
-  const category = useSelector((state) => state.category.value)
-  const [movies, setMovies] = useState(initialMovies)
-  const [currentPage, setCurrentPage] = useState(1)
+const MoviesPage = () => {
+  const router = useRouter();
+  const { category } = router.query;
+  const [initialmovies, setInitialmovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const fetchMoreMovies = async () => {
-    const nextPage = currentPage + 1
-    const newMovies = await fetchLatestMovies(nextPage)
-    setMovies([...newMovies.results])
-    setCurrentPage(nextPage)
-  }
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        let url;
+        if (category === "latest") {
+          url = categoryMoviesUrl("now_playing", currentPage);
+        } else {
+          url = categoryMoviesUrl(category, currentPage);
+        }
 
-  const fetchPreviousMovies = async () => {
-    if (currentPage > 1) {
-      const prevPage = currentPage - 1
-      const newMovies = await fetchLatestMovies(prevPage)
-      setMovies([...newMovies.results])
-      setCurrentPage(prevPage)
+        const res = await fetch(url);
+        const data = await res.json();
+
+        // Update state based on the fetched data
+        setInitialmovies(data.results || []);
+        setTotalPages(data.total_pages || 1);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchMovies();
+  }, [category, currentPage]);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
     }
-  }
-  console.log(category)
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
+
     <div>
-      <h1 className="focus:outline-none ">Latest Movies</h1>
+      <h2 className="text-4xl font-extrabold mb-6 text-cyan-600">{category} Movies</h2>
       <div className="flex flex-wrap">
-        {movies.map((movie) => (
-          <Card key={movie.id} category={movie} />
-        ))}
+      {initialmovies.map((movie) => (
+        <div key={movie.id}>
+          <Card category={movie} />
+        </div>
+      ))}
       </div>
 
-      <button
-        onClick={fetchPreviousMovies}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-      >
-        Previous
-      </button>
-      <button
-        onClick={fetchMoreMovies}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-      >
-        Next Page
-      </button>
+      <div className="flex justify-center items-center mt-4" >
+        <button  className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+         onClick={handlePrevPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+
+        <span className="mx-4">{`Page ${currentPage} of ${totalPages}`}</span>
+        <button  className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+            currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+          }`} onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next Page
+        </button>
+
+      </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default Movies
+export default MoviesPage;
