@@ -35,7 +35,7 @@ export default function Home({
 }) {
   // collection component return a collextion of card with row scrolling
   return (
-    <section className=" m-[20px] md:mx-[100px]">
+    <section className="">
       <LatestMovies data={latestMovies} />
       <PopularMovies data={popularMovies} />
       <TopRatedMovies data={topRatedMovies} />

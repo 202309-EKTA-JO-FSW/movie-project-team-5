@@ -20,7 +20,7 @@ export default function Layout({ children }) {
     <>
       <Provider store={store}>
         <NavBar genresList={genresList} />
-        <main className="text-white">{children}</main>
+        <main className="text-white  m-[20px] md:mx-[100px]">{children}</main>
         <footer>Footer</footer>
       </Provider>
     </>
