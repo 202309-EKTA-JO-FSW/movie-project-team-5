@@ -2,6 +2,7 @@ import LatestMovies from "@/components/home/LatestMovies"
 import PopularMovies from "@/components/home/PopularMovies"
 import TopRatedMovies from "@/components/home/TopRatedMovies"
 import UpcomingMovies from "@/components/home/UpcomingMovies"
+
 import {
   fetchLatestMovies,
   fetchPopularMovies,
